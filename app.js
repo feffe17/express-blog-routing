@@ -5,9 +5,7 @@ const host = "http://127.0.0.1";
 const port = 3003;
 const dbRouters = require('./routers/posts');
 
-// app.get('/', (req, res) => {
-//     res.send("<h1>Benvenuto nel mio blog!</h1>")
-//   });
+app.use(express.json())
 
 app.use("/posts", dbRouters);
 
@@ -15,6 +13,3 @@ app.listen(port, () => {
     console.log(`Example app listening on port ${host}:${port}`)
   });
 
-// app.get('/db' , dbController.index);
-
-// app.get('/db/:slug', dbController.show);
