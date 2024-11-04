@@ -1,9 +1,19 @@
 const db = require("../db");
 
 exports.index = (req, res) => {
+
+    const { tag } = req.query;
+
+    let filteredPosts = db;
+    if (tag) {
+    filteredPosts = db.filter(post => post.tags.includes(tag));
+    }
+
+
+
     res.json({
-      counter: db.length,
-      lista: db
+      counter: filteredPosts.length,
+      lista: filteredPosts
     });
   };
 
